@@ -3,117 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Techora Smart Vend</title>
+    <title>Techora - Smart Vending</title>
     <style>
-        /* Techora Branding Colors */
+        /* COLOR PALETTE extracted from your Logos */
         :root {
-            --primary-color: #0056b3; /* Tech Blue */
-            --secondary-color: #f8f9fa;
-            --accent-color: #ff9800;
+            --rec-purple: #3e106e; /* Deep Purple from REC Logo */
+            --rec-yellow: #ffcd00; /* Yellow from REC Flame */
+            --techora-brown: #6f4e37; /* Coffee Brown from Techora Logo */
+            --bg-color: #f8f8f8;
+            --text-color: #333;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f9;
+            background-color: var(--bg-color);
             margin: 0;
             padding: 0;
+            color: var(--text-color);
         }
 
-        /* The Techora Header */
+        /* HEADER DESIGN - White background to blend with JPEGs */
         header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            background-color: white;
+            padding: 15px 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--rec-purple);
         }
 
-        header h1 {
+        /* LOGO STYLING */
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Left Logo (REC) */
+        .logo-rec {
+            height: 70px; /* Adjust height as needed */
+            width: auto;
+        }
+
+        /* Right Logo (Techora) */
+        .logo-techora {
+            height: 90px; /* Techora is the main brand, slightly larger */
+            width: auto;
+        }
+
+        /* MAIN DASHBOARD */
+        .container {
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .welcome-text {
+            color: var(--techora-brown);
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-left: 5px solid var(--rec-yellow);
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .status-item h3 {
             margin: 0;
-            font-size: 24px;
-            letter-spacing: 2px;
+            color: #888;
+            font-size: 0.9rem;
             text-transform: uppercase;
         }
 
-        header .tagline {
-            font-size: 12px;
-            opacity: 0.8;
-            margin-top: 5px;
+        .status-item p {
+            margin: 5px 0 0 0;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--rec-purple);
         }
 
-        /* The Machine Status Card */
-        .container {
-            padding: 20px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .status-card {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .status-indicator {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            background-color: #28a745; /* Green for Online */
-            border-radius: 50%;
-            margin-right: 5px;
-        }
-
+        /* INTERACTIVE BUTTON */
         .btn-dispense {
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--rec-purple), #5e2a9c);
             color: white;
             border: none;
-            padding: 15px 30px;
-            border-radius: 8px;
-            font-size: 16px;
-            width: 100%;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
             cursor: pointer;
-            transition: background 0.3s;
+            box-shadow: 0 4px 15px rgba(62, 16, 110, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .btn-dispense:hover {
-            background-color: #004494;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(62, 16, 110, 0.4);
         }
-        
+
+        .btn-dispense:active {
+            transform: translateY(1px);
+        }
+
         footer {
             text-align: center;
-            font-size: 12px;
-            color: #888;
+            font-size: 0.8rem;
+            color: #999;
             margin-top: 50px;
+            padding-bottom: 20px;
+        }
+
+        /* Responsive design for mobile phones */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .logo-rec { height: 50px; }
+            .logo-techora { height: 70px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>TECHORA</h1>
-        <div class="tagline">Intelligent Vending Solutions</div>
+        <div class="logo-container">
+            <img src="REC Logo.jpg" alt="Rajalakshmi Engineering College" class="logo-rec">
+        </div>
+        
+        <div class="logo-container">
+            <img src="Techora Logo.jpg" alt="Techora Systems" class="logo-techora">
+        </div>
     </header>
 
     <div class="container">
-        <div class="status-card">
-            <p><span class="status-indicator"></span>System Online</p>
-            <h3>Machine ID: TCR-001</h3>
-            <p>Temperature: <strong>24°C</strong> | Connection: <strong>Wi-Fi</strong></p>
+        <div class="welcome-text">
+            Welcome to the Techora Interface
         </div>
 
-        <div class="product-card">
-            <button class="btn-dispense" onclick="alert('Signal sent to Techora Cloud: Dispensing Item...')">
-                Dispense Product
+        <div class="card">
+            <div class="status-grid">
+                <div class="status-item">
+                    <h3>Temperature</h3>
+                    <p>65°C</p> </div>
+                <div class="status-item">
+                    <h3>System Status</h3>
+                    <p style="color: #28a745;">Ready</p>
+                </div>
+            </div>
+
+            <button class="btn-dispense" onclick="dispenseProduct()">
+                Dispense Coffee
             </button>
         </div>
     </div>
 
     <footer>
-        &copy; 2026 Techora Systems. All Rights Reserved.
+        <p>Developed at Rajalakshmi Engineering College</p>
+        <p>&copy; 2026 Techora Systems</p>
     </footer>
+
+    <script>
+        function dispenseProduct() {
+            alert('Command Sent: Dispensing Product...');
+            // Add your Fetch API or AJAX call here to talk to ESP32
+        }
+    </script>
 
 </body>
 </html>
